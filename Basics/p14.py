@@ -42,3 +42,6 @@ if string.startswith("a" or "e" or "i" or "o" or "u"):
     print(string + "way")
 else:
     print(string[1:len(string)] + string[0] + "ay")
+
+
+
