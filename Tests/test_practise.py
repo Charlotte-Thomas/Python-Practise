@@ -20,7 +20,7 @@ def lower_case(x):
 lower_case('LOWER CASE')
 
 # tests for scenarios that WORK
-def test_capital_case():
+def test_lower_case():
     assert lower_case('LOWER CASE') == 'lower case'
 
 # test for scenarios that should CAUSE ERRORS
