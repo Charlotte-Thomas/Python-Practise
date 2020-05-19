@@ -2,6 +2,9 @@
 # Pytest expects tests to be located in files with names begining with test_ or ending with _test.py.
 # Prefix test function names with test_, this is what pytest expects our test functions to be named.
 
+# terminal: pytest  - to run all test files
+# pytest practise.py::<function_name> to run a specific function
+
 
 import pytest
 
