@@ -16,7 +16,7 @@ fruit.insert(1, 'star fruit')
 print(fruit)
 
 
-# | p.63 - 069 |
+# | p.62 - 069 |
 
 def get_country_index(match):
     if isinstance(match, str):
@@ -29,6 +29,19 @@ def get_country_index(match):
     raise TypeError('Please provide a string argument')
 
 
+# | p.62 - 0.74 |
+
+def colour_range(start, end):
+    if isinstance(start, int) and isinstance(end, int):
+        if 4 >= start >= 0 and 5 <= end <= 9:
+            colours = ['blue', 'yellow', 'red', 'green', 'black', 'pink', 'purple', 'grey', 'white', 'orange']
+            new_colours = colours[start:end]
+            print(new_colours)
+            return new_colours
+        raise Exception('Please provide a number between 0-4 [0] and 5-9 [1]')
+    raise TypeError('Please provide an int argument')
+colour_range(0, 9)
+
 # | p.63 - 078 |
 
 
@@ -40,3 +53,14 @@ def add_show():
 
     shows.insert(position, new_show)
     print(('\n').join(shows))
+
+
+def add_show_test_version(new_show, position):
+    shows = ['GOT', 'West World', 'Vikings', 'Medici', 'Tiger King']
+    if isinstance(new_show, str) and isinstance(position, int):
+        shows.insert(position, new_show)
+        print((shows))
+        return shows
+    raise TypeError(
+        'Please provide a string argument [0] and an int arguement [1]')
+
