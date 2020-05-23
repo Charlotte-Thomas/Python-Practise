@@ -18,3 +18,12 @@ def num_vowels(name):
         return num
     raise TypeError('Please provide a string argument')
 
+
+# | p.69 - 087 |
+
+def word_reverse(word):
+    if isinstance(word, str):
+        # prints the letters in a vertical direction
+        print(('\n').join(list(word[::-1])))
+        return word[::-1]
+    raise TypeError('Please provide a string argument')
