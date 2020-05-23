@@ -1,6 +1,6 @@
 import pytest
 # from E_p58 import get_country_index
-target = __import__("B_p58")
+target = __import__("B1_p58")
 get_country_index = target.get_country_index
 
 
