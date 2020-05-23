@@ -18,6 +18,7 @@ def test_country_index_errors():
 
 
 def test_add_show():
+  # test for floats
     assert target.add_show_test_version('Merlin', 3) == ['GOT', 'West World', 'Vikings', 'Merlin', 'Medici', 'Tiger King']
     assert target.add_show_test_version('Ozark', 0) == ['Ozark', 'GOT', 'West World', 'Vikings', 'Medici', 'Tiger King']
     assert target.add_show_test_version('Ozark', 10) == ['GOT', 'West World', 'Vikings', 'Medici', 'Tiger King', 'Ozark']
