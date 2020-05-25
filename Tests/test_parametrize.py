@@ -1,9 +1,6 @@
 
-# pytest Tests/test_parametrize.py::test_add
-# test add
-
 import pytest
-
+# pytest Tests/test_parametrize.py::test_add
 
 # test add
 
