@@ -39,6 +39,18 @@ def test_create_array(nums_list, expected):
     assert C2.create_array(nums_list) == expected
 
 
+# -------------- conjoin_array ----------------------
+
+@pytest.mark.parametrize('nums_list, expected', [
+    ([5, 2, 9], [2, 3, 3, 3, 3, 3, 5, 9,]),
+    ([100, 1, 4], [1, 3, 3, 3, 3, 3, 4, 100,])
+])
+def test_conjoin_arrays(monkeypatch, nums_list, expected):
+    monkeypatch.setattr('random.randint', lambda a, b: 3) # will override random.randint in conjoin function
+    assert C2.conjoin_arrays(nums_list) == expected
+
+
+
 # -------------- Test for exceptions ----------------------
 
 def test_TypeErrors():
@@ -46,7 +58,13 @@ def test_TypeErrors():
         C1.num_vowels(6)
         C1.word_reverse(2)
         C2.create_array('string')
+        C2.conjoin_arrays(['string', 'string', 'string'])
+        C2.conjoin_arrays([1.4, 4, 5.6])
+
     with pytest.raises(Exception):
         C2.create_array('string')
         C2.create_array(1)
         C2.create_array([12, 14, 15, 17, 20, 13])
+        C2.conjoin_arrays('string')
+        C2.conjoin_arrays(7)
+        C2.conjoin_arrays([3, 5])
