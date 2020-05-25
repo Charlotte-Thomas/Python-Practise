@@ -26,5 +26,5 @@ def create_array(nums):
         for num in new_array:
             print(num)
         return new_array
-    raise Exception('please enter an array of 5 integers')
+    raise Exception('please enter a list of 5 integers')
 
