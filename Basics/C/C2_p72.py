@@ -49,3 +49,20 @@ def conjoin_arrays(nums):
         return sorted(random_array)
 
     raise Exception('please enter a list of 3 integers')
+
+
+
+# | p.74 - 092 |
+
+def divide_array():
+    choices = array('f', [10.56, 20.43, 44.87, 63.45, 98.73])
+    user_num = int(input('Input an integer between 2 & 5: '))
+    if  2 <= user_num <= 5:
+        new_array = [] # can't be numeric array because it won't accept rounded numbers
+        for choice in choices:
+            divided = round(choice / user_num, 2)
+            print(divided)
+            new_array.append(divided)
+        print(new_array)
+        return new_array
+    raise Exception(f'Please enter a number between 2 & 5, you picked {user_num}')
