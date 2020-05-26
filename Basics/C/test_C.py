@@ -53,7 +53,7 @@ def test_conjoin_arrays(monkeypatch, nums_list, expected):
 
 # -------------- Test for exceptions ----------------------
 
-def test_TypeErrors():
+def test_Errors():
     with pytest.raises(TypeError):
         C1.num_vowels(6)
         C1.word_reverse(2)
@@ -68,3 +68,27 @@ def test_TypeErrors():
         C2.conjoin_arrays('string')
         C2.conjoin_arrays(7)
         C2.conjoin_arrays([3, 5])
+
+
+
+# -------------- divide_array ----------------------
+
+@pytest.mark.parametrize('num, expected', [
+   ('2', [5.28, 10.22, 22.43, 31.73, 49.37]),
+   ('4', [2.64, 5.11, 11.22, 15.86, 24.68])
+])
+def test_divide_array(monkeypatch, num, expected):
+    monkeypatch.setattr('builtins.input', lambda x: num)
+    assert C2.divide_array() == expected
+
+@pytest.mark.parametrize('num', [
+   ('0'),
+   ('6'),
+   ('5.55678'),
+   ('string'),
+   (9)
+])
+def test_divide_array_Errors(monkeypatch, num):
+    monkeypatch.setattr('builtins.input', lambda x: num)
+    with pytest.raises(Exception):
+        C2.divide_array()
