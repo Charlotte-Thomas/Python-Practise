@@ -1,8 +1,11 @@
 
 import pytest
 from array import *
+import os # for use of mocker
+
 C1 = __import__("C1_p67")
 C2 = __import__("C2_p72")
+C3 = __import__("C3_p79")
 
 # -------------- num_vowels ----------------------
 
@@ -46,7 +49,7 @@ def test_create_array(nums_list, expected):
     ([100, 1, 4], [1, 3, 3, 3, 3, 3, 4, 100,])
 ])
 def test_conjoin_arrays(monkeypatch, nums_list, expected):
-    monkeypatch.setattr('random.randint', lambda a, b: 3) # will override random.randint in conjoin function
+    monkeypatch.setattr('random.randint', lambda a, b: 3) # will override random.randint in conjoin function... a & b for num of arguments in random func.
     assert C2.conjoin_arrays(nums_list) == expected
 
 
@@ -92,3 +95,27 @@ def test_divide_array_Errors(monkeypatch, num):
     monkeypatch.setattr('builtins.input', lambda x: num)
     with pytest.raises(Exception):
         C2.divide_array()
+
+
+
+# -------------- choose_value ----------------------
+
+@pytest.mark.parametrize('row, col, expected', [
+  ('1', '1', 7),
+  ('3', '2', 0),
+  ('0', '1', 5)
+])
+def test_choose_value(mocker, row, col, expected):
+    mocker.patch('builtins.input', side_effect=[row, col]) # mocker allows us to enter vals for multiple inputs (install & import os for use)
+    assert C3.choose_value() == expected
+
+@pytest.mark.parametrize('row, col, error', [
+   ('-2', '8', IndexError),
+   ('9', '11', IndexError),
+   ('5.345', '5.89', ValueError),
+   ('string', 'string', ValueError),
+])
+def test_choose_value_Errors(mocker, row, col, error):
+    mocker.patch('builtins.input', side_effect=[row, col])
+    with pytest.raises(error):
+        C3.choose_value()

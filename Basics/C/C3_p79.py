@@ -23,8 +23,6 @@ def choose_value():
     print(f'value = {grid[row][column]}')
     return grid[row][column]
 
-# choose_value()
-
 
 # | p.82 - 102 |
 
@@ -32,7 +30,7 @@ def get_info(people):
     if isinstance(people, list) and len(people) == 3:
         for person in people:
             if not isinstance(person, dict) or not person.__contains__('name') or not person.__contains__('age') or not person.__contains__('shoe_size'):
-                raise Exception('incorrect arguement formatting')
+                raise Exception('incorrect argument formatting')
         print('\n' + people[0]['name'], '\n' + people[1]['name'], '\n' + people[2]['name'])
         user_choice = str(input('Pick a name to see their age and shoe size: ')).lower()
         for person in people:
