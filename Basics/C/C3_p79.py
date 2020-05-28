@@ -11,6 +11,21 @@
 # OR dicts within a dict
 
 
+
+# | p.82 - 096 & 097 |
+
+def choose_value():
+    grid = [[2, 5, 8], [3, 7, 4], [1, 6, 9], [4, 2, 0]]
+    for row in grid:
+        print(row)
+    row = int(input('choose a row (0-3): '))
+    column = int(input('choose a column (0-2): '))
+    print(f'value = {grid[row][column]}')
+    return grid[row][column]
+
+# choose_value()
+
+
 # | p.82 - 102 |
 
 def get_info(people):
@@ -33,3 +48,5 @@ def get_info(people):
 #     {'name': 'George', 'age': 45, 'shoe_size': 6},
 #     {'name': 'Mary', 'age': 25, 'shoe_size': 7}
 # ])
+
+
