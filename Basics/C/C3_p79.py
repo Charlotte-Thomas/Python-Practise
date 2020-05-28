@@ -37,8 +37,8 @@ def get_info(people):
             if person['name'].lower() == user_choice:
                 print(f'{person["name"]} is {person["age"]} years old and has a shoe size of {person["shoe_size"]}') # have to use double quotes in f string
                 return [person['age'], person['shoe_size']]
-        raise Exception('this person does exist in list')
-    raise TypeError('Please provide a list with length of 3')
+        raise Exception('this person does not exist within the list')
+    raise TypeError('Please provide a list with a length of 3')
             
 
 # get_info([

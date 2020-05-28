@@ -62,5 +62,5 @@ def add_show_test_version(new_show, position):
         print((shows))
         return shows
     raise TypeError(
-        'Please provide a string argument [0] and an int arguement [1]')
+        'Please provide a string argument [0] and an int argument [1]')
 
