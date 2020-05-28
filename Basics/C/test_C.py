@@ -119,3 +119,39 @@ def test_choose_value_Errors(mocker, row, col, error):
     mocker.patch('builtins.input', side_effect=[row, col])
     with pytest.raises(error):
         C3.choose_value()
+
+
+
+# -------------- get_info ----------------------
+
+@pytest.mark.parametrize('name, expected', [
+  ('jess', [30, 5]),
+  ('GEORGE', [45, 6]),
+  ('MaRy', [25, 7])
+])
+def test_get_info(monkeypatch, name, expected):
+    people = [{'name': 'Jess', 'age': 30, 'shoe_size': 5},
+              {'name': 'George', 'age': 45, 'shoe_size': 6},
+              {'name': 'Mary', 'age': 25, 'shoe_size': 7}]
+    monkeypatch.setattr('builtins.input', lambda x: name)
+    assert C3.get_info(people) == expected
+
+@pytest.mark.parametrize('people, name, error', [
+     ([{'name': 'George', 'age': 45, 'shoe_size': 6},
+       {'name': 'Mary', 'age': 25, 'shoe_size': 7}], 'jess', TypeError),
+     ({'dict': {'name': 'George', 'age': 45, 'shoe_size': 6},
+       'dict2': {'name': 'Mary', 'age': 25, 'shoe_size': 7}}, 'jess', TypeError),
+     ([{'wrong': 'George', 'age': 45, 'shoe_size': 6},
+       {'name': 'Mary', 'wrong': 25, 'shoe_size': 7},
+       {'name': 'Jess', 'age': 30, 'wrong': 5}], 'jess', Exception),
+     ([{'name': 'Jess', 'age': 30, 'show_size': 5},
+       {'name': 'George', 'age': 45, 'shoe_size': 6},
+       ['Mary', 25, 7]], 'jess', Exception),
+     ([{'name': 'Jess', 'age': 30, 'shoe_size': 5},
+       {'name': 'George', 'age': 45, 'shoe_size': 6},
+       {'name': 'Mary', 'age': 25, 'shoe_size': 7}], 'bob', Exception)
+])
+def test_get_info_Errors(monkeypatch, people, name, error):
+    monkeypatch.setattr('builtins.input', lambda x: name)
+    with pytest.raises(error):
+        C3.choose_value(people)

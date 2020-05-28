@@ -39,12 +39,10 @@ def get_info(people):
                 return [person['age'], person['shoe_size']]
         raise Exception('this person does not exist within the list')
     raise TypeError('Please provide a list with a length of 3')
-            
 
+# correct format:
 # get_info([
 #     {'name': 'Jess', 'age': 30, 'shoe_size': 5},
 #     {'name': 'George', 'age': 45, 'shoe_size': 6},
 #     {'name': 'Mary', 'age': 25, 'shoe_size': 7}
 # ])
-
-
