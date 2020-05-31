@@ -155,3 +155,26 @@ def test_get_info_Errors(monkeypatch, people, name, error):
     monkeypatch.setattr('builtins.input', lambda x: name)
     with pytest.raises(error):
         C3.choose_value(people)
+
+
+
+# -------------- remove_person ----------------------
+
+@pytest.mark.parametrize('name, expected', [
+      ('Jess', [{'name': 'George', 'age': 45, 'shoe_size': 6}, {'name': 'Mary', 'age': 25, 'shoe_size': 7}]),
+      ('GEORGE', [{'name': 'Jess', 'age': 30, 'shoe_size': 5}, {'name': 'Mary', 'age': 25, 'shoe_size': 7}]),
+      ('mary', [{'name': 'Jess', 'age': 30, 'shoe_size': 5}, {'name': 'George', 'age': 45, 'shoe_size': 6}])
+])
+def test_remove_person(monkeypatch, name, expected):
+    monkeypatch.setattr('builtins.input', lambda x: name)
+    assert C3.remove_person() == expected
+
+
+@pytest.mark.parametrize('name, error', [
+      (1, Exception),
+      ('not_a_name', Exception)
+])
+def test_remove_person_Errors(monkeypatch, name, error):
+    monkeypatch.setattr('builtins.input', lambda x: name)
+    with pytest.raises(error):
+        C3.remove_person()
