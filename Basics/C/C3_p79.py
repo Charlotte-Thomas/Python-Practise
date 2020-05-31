@@ -26,6 +26,10 @@ def choose_value():
 
 # | p.82 - 102 |
 
+info = [{'name': 'Jess', 'age': 30, 'shoe_size': 5},
+       {'name': 'George', 'age': 45, 'shoe_size': 6},
+       {'name': 'Mary', 'age': 25, 'shoe_size': 7}]
+
 def get_info(people):
     if isinstance(people, list) and len(people) == 3:
         for person in people:
@@ -40,9 +44,21 @@ def get_info(people):
         raise Exception('this person does not exist within the list')
     raise TypeError('Please provide a list with a length of 3')
 
-# correct format:
-# get_info([
-#     {'name': 'Jess', 'age': 30, 'shoe_size': 5},
-#     {'name': 'George', 'age': 45, 'shoe_size': 6},
-#     {'name': 'Mary', 'age': 25, 'shoe_size': 7}
-# ])
+# get_info(info)
+
+
+# | p.82 - 104 |
+
+def remove_person():
+    info_copy = info[:]
+    print('\n' + info[0]['name'], '\n' + info[1]['name'], '\n' + info[2]['name'])
+    choice = str(input('choose a person to remove: ')).lower()
+    for person in info:
+        if person['name'].lower() == choice:
+            info_copy.remove(person)
+            print(info_copy)
+            return info_copy
+    raise Exception('this person does not exist within the list')
+
+
+
