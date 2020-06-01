@@ -50,3 +50,10 @@ def books_by_year():
     for row in reader:
         if start_year <= int(row[2]) <= end_year:
             print(row)
+
+
+def display_data():
+    file = open('CSVs/Books.csv', 'r')
+    reader = list(csv.reader(file))
+    for row in enumerate(reader):
+        print(f'row {row[0]}: {row[1]}')
