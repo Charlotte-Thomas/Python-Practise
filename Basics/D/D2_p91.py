@@ -1,4 +1,5 @@
 
+import csv
 
 #  ------- CSV Files --------
 
@@ -21,3 +22,18 @@ def create_csv():
     file.close()
 
 
+# | p.95 - 112 |
+
+def append_csv():
+    file = open('CSVs/Books.csv', 'a')
+    book_name = str(input('Enter a book name: '))
+    author = str(input('Enter author name: '))
+    date = str(input('Enter year released: '))
+    file.write(book_name + ', ' + author + ', ' + date + '\n')
+    file.close()
+
+    file = open('CSVs/Books.csv', 'r')
+    reader = list(csv.reader(file))
+    for row in reader:
+        print(row)
+    file.close()
