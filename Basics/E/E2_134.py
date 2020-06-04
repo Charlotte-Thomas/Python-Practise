@@ -81,4 +81,4 @@ def phonebook_options():
         return
     else:
         raise Exception('not a choice')
-    db.close()5
+    db.close()
