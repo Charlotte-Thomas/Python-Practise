@@ -117,6 +117,21 @@ def create_BookInfo():
         cursor.execute('''INSERT INTO Books(ID, title, author, date_published)
           VALUES(?,?,?,?)''', (i + 1, books[i][0], authors[books[i][1]][0], books[i][2]))
         db.commit()
-        
+
     db.close()
 
+
+# | p.140 - 142 |
+
+def search_place():
+    with sqlite3.connect('database/BookInfo.db') as db:
+        cursor = db.cursor()
+    cursor.execute('SELECT * FROM authors')
+    print(cursor.fetchall())
+
+    place = input('enter authors place of birth: ').capitalize()
+    cursor.execute('SELECT * FROM authors WHERE birth_place == ?', [place])
+    authors = cursor.fetchall()
+    for author in authors:
+        cursor.execute('SELECT * FROM books WHERE author == ?', [author[0]])
+        print(cursor.fetchall())
