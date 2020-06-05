@@ -8,10 +8,10 @@ import sqlite3
 # EXTRA:
 # data types: integer, real(float), text, blob(stored exactly as it was input)
 
-# | p.140 - 139 |
+# | p.140 - 139 & 140 |
 
 def create_phonebook():
-    with sqlite3.connect('PhoneBook.db') as db:
+    with sqlite3.connect('database/PhoneBook.db') as db:
         cursor = db.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS PhoneBook(
@@ -59,7 +59,7 @@ def del_person(cursor, db):
     db.commit()
 
 def phonebook_options():
-    with sqlite3.connect('PhoneBook.db') as db:
+    with sqlite3.connect('database/PhoneBook.db') as db:
         cursor = db.cursor()
 
     print('''    1) View phone book
@@ -82,3 +82,41 @@ def phonebook_options():
     else:
         raise Exception('not a choice')
     db.close()
+
+
+# | p.140 - 141 |
+
+def create_BookInfo():
+    with sqlite3.connect('database/BookInfo.db') as db:
+        cursor = db.cursor()
+    
+    cursor.execute('''CREATE TABLE IF NOT EXISTS Authors(
+    name text PRIMARY KEY,
+    birth_place text NOT NULL);''')
+
+    cursor.execute('''CREATE TABLE IF NOT EXISTS Books(
+    id integer PRIMARY KEY,
+    title text,
+    author text,
+    date_published integer);''')
+    
+    authors = [['Agatha Christie', 'Torquay'], ['Cecelia Ahern', 'Dublin'], ['J.K Rowling', 'Bristol'], ['Oscar Wilde', 'Dublin']]
+    books = [
+      ['De Profundis', 3, 1905],
+      ['Harry Potter and the chamber of secrets', 2, 1998],
+      ['Harry Potter and the prisoner of Azkaban', 2, 1999],
+      ['Lyrebird', 1, 2017],
+      ['Murder on the Orient Express', 0, 1934],
+      ['Perfect', 1, 2017]]
+
+    for i in range(0, 4):
+        cursor.execute('''INSERT INTO Authors(name, birth_place)
+          VALUES(?,?)''', (authors[i][0], authors[i][1]))
+        db.commit()
+    for i in range(0, 6):
+        cursor.execute('''INSERT INTO Books(ID, title, author, date_published)
+          VALUES(?,?,?,?)''', (i + 1, books[i][0], authors[books[i][1]][0], books[i][2]))
+        db.commit()
+        
+    db.close()
+
