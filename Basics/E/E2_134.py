@@ -135,6 +135,7 @@ def search_place():
     for author in authors:
         cursor.execute('SELECT * FROM books WHERE author == ?', [author[0]])
         print(cursor.fetchall())
+    db.close()
 
 
 # | p.140 - 143 |
@@ -146,3 +147,4 @@ def search_year():
     cursor.execute('SELECT * FROM books WHERE date_published >= ? ORDER BY date_published', [year])
     for book in cursor.fetchall():
         print(book)
+    db.close()
