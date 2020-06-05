@@ -135,3 +135,14 @@ def search_place():
     for author in authors:
         cursor.execute('SELECT * FROM books WHERE author == ?', [author[0]])
         print(cursor.fetchall())
+
+
+# | p.140 - 143 |
+
+def search_year():
+    with sqlite3.connect('database/BookInfo.db') as db:
+        cursor = db.cursor()
+    year = int(input('enter a year: '))
+    cursor.execute('SELECT * FROM books WHERE date_published >= ? ORDER BY date_published', [year])
+    for book in cursor.fetchall():
+        print(book)
