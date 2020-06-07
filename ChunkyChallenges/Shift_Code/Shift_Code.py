@@ -40,6 +40,7 @@ def convert_msg(decode):
         else:
             code.append(char)
     print('your coded message is:', ('').join(code))
+    return ('').join(code)
 
 
 def present_options():
