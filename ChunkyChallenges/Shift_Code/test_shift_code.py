@@ -1,9 +1,6 @@
 
 import pytest
-import os # for use of mocker
-
 shift = __import__("Shift_Code")
-
 
 @pytest.mark.parametrize('decode, msg, num, expected', [
   (False, 'abcd', '3', 'defg'),
@@ -25,4 +22,3 @@ def test_shift_code(mocker, decode, msg, num, expected):
 ])
 def test_find_char(decode, char, num, expected):
     assert shift.find_char(decode, char, num) == expected
-
