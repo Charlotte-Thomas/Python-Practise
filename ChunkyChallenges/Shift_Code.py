@@ -12,10 +12,22 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
             'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+skip = [' ', '\'', '.', ',', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
 
 def convert_msg():
     msg = input('enter message to be coded: ')
-    print(list(msg))
+    num = int(input('enter number (1 - 25) to shift message by: '))
+    code = []
+    for char in list(msg):
+        if not skip.__contains__(char):
+            new_position = alphabet.index(char) + num
+            if new_position >= 26:
+                new_position -= 26
+            code.append(alphabet[new_position])
+        else:
+            code.append(char)
+    print('your coded message is:', ('').join(code))
 
 
 def present_options():
