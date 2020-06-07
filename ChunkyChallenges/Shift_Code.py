@@ -26,9 +26,12 @@ def find_char(decode, char, num):
             new_position += 26
     return new_position
 
+
 def convert_msg(decode):
     msg = input('enter message to be coded / decoded: ')
     num = int(input('enter number (1 - 25) to shift message by: '))
+    if not 1 <= num <= 25:
+        num = int(input('enter a number between 1 - 25: '))
     code = []
     for char in list(msg):
         if not skip.__contains__(char):
@@ -40,12 +43,18 @@ def convert_msg(decode):
 
 
 def present_options():
-    print(' 1) Make a code \n 2) Decode a message \n 3) Quit')
-    choice = input('choose an option: ')
-    if choice == '1':
-        convert_msg(False)
-    if choice == '2':
-        convert_msg(True)
+    loop = True
+    while loop:
+        print(' 1) Make a code \n 2) Decode a message \n 3) Quit')
+        choice = input('choose an option: ')
+        if choice == '1':
+            convert_msg(False)
+        elif choice == '2':
+            convert_msg(True)
+        elif choice == '3':
+            loop = False
+        else:
+            print('not a valid option')
 
 
 present_options()
