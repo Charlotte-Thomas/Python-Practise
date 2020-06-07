@@ -28,10 +28,10 @@ def find_char(decode, char, num):
 
 
 def convert_msg(decode):
-    msg = input('enter message to be coded / decoded: ')
+    msg = input('enter message to be coded / decoded: ').lower()
     num = int(input('enter number (1 - 25) to shift message by: '))
     if not 1 <= num <= 25:
-        num = int(input('enter a number between 1 - 25: '))
+        num = int(input('number not valid, enter a number between 1 - 25: '))
     code = []
     for char in list(msg):
         if not skip.__contains__(char):
