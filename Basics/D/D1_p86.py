@@ -11,7 +11,7 @@
 # | p.88 - 106 |
 
 def write_file():
-    file = open('Names.txt', 'w')
+    file = open('Text_files/Names.txt', 'w')
     file.write('Rebecca\n')
     file.write('Bob\n')
     file.write('Jerry\n')
@@ -23,7 +23,7 @@ def write_file():
 # | p.88 - 107 |
 
 def open_file():
-    file = open('Names.txt', 'r')
+    file = open('Text_files/Names.txt', 'r')
     print(file.read())
     file.close()
 
@@ -31,11 +31,11 @@ def open_file():
 # | p.88 - 108 |
 
 def append_file():
-    file = open('Names.txt', 'a')
+    file = open('Text_files/Names.txt', 'a')
     new_name = input('enter a new name: ').capitalize()
     file.write(new_name + '\n')
     file.close()
-    file = open('Names.txt', 'r')
+    file = open('Text_files/Names.txt', 'r')
     print(file.read())
     file.close()
 
@@ -43,15 +43,15 @@ def append_file():
 # | p.88 - 110 |
 
 def alter_file():
-    file = open('Names.txt', 'r')
+    file = open('Text_files/Names.txt', 'r')
     print(file.read())
     file.close()
 
-    file = open('Names.txt', 'r')
+    file = open('Text_files/Names.txt', 'r')
     new_name = input('pick a name from the list: ').capitalize() + '\n'
     for name in file:
         if name != new_name:
-            file = open('Names2.txt', 'a')
+            file = open('Text_files/Names2.txt', 'a')
             file.write(name)
             file.close()
     file.close()

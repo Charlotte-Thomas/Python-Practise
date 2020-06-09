@@ -3,5 +3,4 @@ Bob
 Jerry
 Tash
 Natalie
-Jeff
-Manny
+Percy
