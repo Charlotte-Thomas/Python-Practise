@@ -18,7 +18,7 @@ def randomise():
     print(selection)  # del
     return selection
 
-def colours_correct(choice, selection):
+def colours_correct(choice, selection): # pass in with both dashed
     print(selection)
     correct = 0
     for col in choice:
@@ -28,7 +28,17 @@ def colours_correct(choice, selection):
     print(correct)
     return correct
 
+
+def positions_correct(choice, selection):
+    correct = 0
+    for col in enumerate(choice):
+        if col[1] == selection[col[0]]:
+            correct += 1
+            selection[col[0]] = '-'
+            choice[col[0]] = '-'
+    return [correct, choice, selection]
     
+
 
 def start_game():
     selection = randomise()
@@ -40,7 +50,8 @@ def start_game():
     choice_list = list(choice)
     if len(choice_list) == 4:
         print('you chose:', choice_list)
-        matches = colours_correct(choice_list, selection)
+        positions_correct(choice_list, selection)
+        # matches = colours_correct(choice_list, selection)
     else:
         print('please enter 4 colours')
 
