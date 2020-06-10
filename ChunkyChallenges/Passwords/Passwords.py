@@ -3,7 +3,7 @@ import csv
 # | p.156 - 148 |
 
 # display options to user in while loop
-# function for each option and subfunctions to use across each (get data, password creation, find user, write data)
+# function for each option and subfunctions to use across each (get data, password creation, find user)
 
 def read_data():
     data = []
@@ -11,14 +11,15 @@ def read_data():
     reader = list(csv.reader(file))
     for row in reader:
         data.append(row)
+    file.close()
     return data
 
 def find_user(name):
     data = read_data()
     for user in data:
         if name == user[0]:
-            return False
-    return True
+            return [True, data.index(user)]
+    return [False, None]
 
 def create_password():
     repeat = True
@@ -64,13 +65,24 @@ def create_user():
     repeat = True
     while repeat:
         name = input('enter a user ID: ')
-        if not find_user(name):
+        if find_user(name)[0]:
             print('ID taken, please enter a different ID')
         else:
             repeat = False
-    create_password()
+    return name
 
-# create_user()
+def change_password():
+    data = read_data()
+    user = input('enter ID of user: ')
+    match = find_user(user)
+    if match[0]:
+        new_pass = create_password()
+        data[match[1]][1] = new_pass
+        print(data)
+        file = open('ChunkyChallenges/Passwords/Passwords.csv', 'w')
+        for row in data:
+            file.write(f'{row[0]},{row[1]}\n')
+        file.close()
 
 def display_options():
     # repeat = True
@@ -78,7 +90,12 @@ def display_options():
     print(' 1) Create a new User ID \n 2) Change a password \n 3) Display all User IDs \n 4) Quit')
     choice = int(input('choose an option from above: '))
     if choice == 1:
-        create_user()
+        name = create_user()
+        password = create_password()
+        file = open('ChunkyChallenges/Passwords/Passwords.csv', 'a')
+        file.write(f'{name},{password}\n')
+        file.close()
+    if choice == 2:
+        change_password()
 
-
-# display_options()
+display_options()
