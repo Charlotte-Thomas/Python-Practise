@@ -13,9 +13,12 @@ colours = ['b', 'g', 'c', 'r', 'w', 'y', 'p']
 
 def randomise():
     selection = []
-    for i in range(0, 4):
+    i = 0
+    while i < 4:
         selection.append(random.choice(colours))
+        i += 1
     return selection
+
 
 def colours_correct(choice, selection):
     correct = 0
@@ -60,4 +63,4 @@ def start_game():
         else:
             print('IMPORTANT! : please enter 4 colours \n')
 
-start_game()
+# start_game()
