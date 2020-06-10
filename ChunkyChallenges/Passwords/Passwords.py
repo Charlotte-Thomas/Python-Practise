@@ -32,8 +32,8 @@ def create_password():
         listed = list(password)
         if len(listed) >= 8:
             points += 1
-        special = ['!', '£', '$', '%', '&', '<', '*', '@'] # allows multiple variable assignments (can be dangerous if mutating lists)
-        has_upper = has_lower = has_nums = has_special = False
+        special = ['!', '£', '$', '%', '&', '<', '*', '@']
+        has_upper = has_lower = has_nums = has_special = False # allows multiple variable assignments (can be dangerous if mutating lists)
         for char in listed:
             if char.isupper():
                 has_upper = True
