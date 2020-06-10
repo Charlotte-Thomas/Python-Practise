@@ -30,7 +30,7 @@ def create_password():
         if len(listed) >= 8:
             points += 1 
         special = ['!', '£', '$', '%', '&', '<', '*', '@']
-        has_upper = has_lower = has_nums = has_special = False # allows mutiple variable assignments (can be dangerous if mutating lists)
+        has_upper = has_lower = has_nums = has_special = False # allows multiple variable assignments (can be dangerous if mutating lists)
         for char in listed:
             if char.isupper():
                 has_upper = True
@@ -60,7 +60,6 @@ def create_password():
             repeat = False
     return password
 
-
 def create_user():
     repeat = True
     while repeat:
@@ -84,6 +83,11 @@ def change_password():
             file.write(f'{row[0]},{row[1]}\n')
         file.close()
 
+def display_ids():
+    data = read_data()
+    for row in data:
+        print(row[0])
+
 def display_options():
     # repeat = True
     # while repeat:
@@ -95,7 +99,9 @@ def display_options():
         file = open('ChunkyChallenges/Passwords/Passwords.csv', 'a')
         file.write(f'{name},{password}\n')
         file.close()
-    if choice == 2:
+    elif choice == 2:
         change_password()
+    elif choice == 3:
+        display_ids()
 
 display_options()
