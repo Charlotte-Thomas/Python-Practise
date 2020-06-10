@@ -7,12 +7,12 @@ import csv
 
 
 def read_data():
+    data = []
     file = open('ChunkyChallenges/Passwords/Passwords.csv', 'r')
     reader = list(csv.reader(file))
     for row in reader:
-        print(row)
-
-read_data()
+        data.append(row)
+    return data
 
 def create_user():
     name = input('enter a user ID: ')
