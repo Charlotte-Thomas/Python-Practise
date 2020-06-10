@@ -5,7 +5,6 @@ import csv
 # display options to user in while loop
 # function for each option and subfunctions to use across each (get data, password creation, find user, write data)
 
-
 def read_data():
     data = []
     file = open('ChunkyChallenges/Passwords/Passwords.csv', 'r')
@@ -14,9 +13,23 @@ def read_data():
         data.append(row)
     return data
 
-def create_user():
-    name = input('enter a user ID: ')
+def find_user(name):
+    data = read_data()
+    for user in data:
+        if name == user[0]:
+            return False
+    return True
 
+def create_user():
+    repeat = True
+    while repeat:
+        name = input('enter a user ID: ')
+        if not find_user(name):
+            print('ID taken, please enter a different ID')
+        else:
+            repeat = False
+
+create_user()
 
 def display_options():
     # repeat = True
