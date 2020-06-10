@@ -20,6 +20,46 @@ def find_user(name):
             return False
     return True
 
+def create_password():
+    repeat = True
+    while repeat:
+        points = 0
+        password = input('please enter a password: ')
+        listed = list(password)
+        if len(listed) >= 8:
+            points += 1 
+        special = ['!', '£', '$', '%', '&', '<', '*', '@']
+        has_upper = has_lower = has_nums = has_special = False # allows mutiple variable assignments (can be dangerous if mutating lists)
+        for char in listed:
+            if char.isupper():
+                has_upper = True
+            if char.islower:
+                has_lower = True
+            if char.isnumeric():
+                has_nums = True
+            if special.__contains__(char):
+                has_special = True
+        if has_upper:
+            points += 1
+        if has_lower:
+            points += 1
+        if has_nums:
+            points += 1
+        if has_special:
+            points += 1
+
+        if points <= 2:
+            print('This is a weak password')
+        elif points <= 4:
+            choice = input('this password could be improved, do you want to try again? y/n: ')
+            if choice == 'n':
+                repeat = False
+        elif points == 5:
+            print('this is a strong password')
+            repeat = False
+    return password
+
+
 def create_user():
     repeat = True
     while repeat:
@@ -28,8 +68,9 @@ def create_user():
             print('ID taken, please enter a different ID')
         else:
             repeat = False
+    create_password()
 
-create_user()
+# create_user()
 
 def display_options():
     # repeat = True
