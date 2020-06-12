@@ -1,8 +1,10 @@
 import csv
+import random
 
 #  ------- Subprograms --------
 
 # | p.102 - 118 |
+
 
 def get_num():
     num = int(input('enter a number: '))
@@ -15,6 +17,26 @@ def count():
         print(number)
 
 
+# | p.102 - 120 |
+
+def add():
+    num1 = random.randint(5, 20)
+    num2 = random.randint(5, 20)
+    correct = num1 + num2
+    repeat = True
+    while repeat:
+        ans = int(input(f'{num1} + {num2} = '))
+        if ans == correct:
+            print('correct!')
+            repeat = False
+
+
+def display_option():
+    choice = int(input(' 1) Addition \n 2) Subtraction \n enter 1 or 2: '))
+    if choice == 1:
+        add()
+
+display_option()
 
 # | p.103 - 122 & 123 |
 
@@ -72,4 +94,3 @@ def show_salary_options():
         return
     else:
         raise Exception('not a choice')
-
