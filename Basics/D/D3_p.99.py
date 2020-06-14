@@ -30,12 +30,14 @@ def add():
     num2 = random.randint(5, 20)
     correct = num1 + num2
     ans = int(input(f'{num1} + {num2} = '))
-    print(ans, correct)
     result(ans, correct)
 
-# def subtract():
-    # 24 50   1 25
-
+def subtract():
+    num1 = random.randint(24, 50)
+    num2 = random.randint(1, 25)
+    correct = num1 - num2
+    ans = int(input(f'{num1} - {num2} = '))
+    result(ans, correct)
 
 def display_option():
     choice = int(input(' 1) Addition \n 2) Subtraction \n enter 1 or 2: '))
