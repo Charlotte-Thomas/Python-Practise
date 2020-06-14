@@ -43,11 +43,11 @@ def display_option():
     choice = int(input(' 1) Addition \n 2) Subtraction \n enter 1 or 2: '))
     if choice == 1:
         add()
-    if choice == 2:
+    elif choice == 2:
         subtract()
-
-
-display_option()
+    else:
+        print('not an option')
+        
 
 # | p.103 - 122 & 123 |
 
