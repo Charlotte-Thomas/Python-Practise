@@ -19,26 +19,36 @@ def count():
 
 # | p.102 - 120 |
 
+def result(ans, correct):
+    if ans == correct:
+        print('Correct!')
+    else:
+        print(f'incorrect, the correct answer is: {correct}')
+
 def add():
     num1 = random.randint(5, 20)
     num2 = random.randint(5, 20)
     correct = num1 + num2
-    repeat = True
-    while repeat:
-        ans = int(input(f'{num1} + {num2} = '))
-        if ans == correct:
-            print('correct!')
-            repeat = False
+    ans = int(input(f'{num1} + {num2} = '))
+    print(ans, correct)
+    result(ans, correct)
+
+# def subtract():
+    # 24 50   1 25
 
 
 def display_option():
     choice = int(input(' 1) Addition \n 2) Subtraction \n enter 1 or 2: '))
     if choice == 1:
         add()
+    if choice == 2:
+        subtract()
+
 
 display_option()
 
 # | p.103 - 122 & 123 |
+
 
 def append_file():
     name = input('enter name: ')
